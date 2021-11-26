@@ -1,15 +1,3 @@
-<!-- <template>
-    <div class="login_container">
-        <form>
-            <div>
-                <input type="email" class="" />
-            </div>
-            <div>
-                <input type="password" />
-            </div>
-        </form>
-    </div>
-</template> -->
 <template>
     <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div class="max-w-md w-full space-y-8">

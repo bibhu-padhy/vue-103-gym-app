@@ -1,6 +1,4 @@
-<template>
-    <Header />
-</template>
+<template>this is home</template>
 
 <script>
 import Header from '../components/Header.vue'
