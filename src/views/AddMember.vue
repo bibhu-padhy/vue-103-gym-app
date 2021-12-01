@@ -1,6 +1,6 @@
 <template>
     <div class>
-        <form @submit="createMember">
+        <form @submit.prevent="createMember">
             <div class="form-control">
                 <label for="name">Name</label>
                 <input v-model="Name" type="text" />
@@ -30,6 +30,7 @@
 export default {
     data() {
         return {
+            filteredText: '',
             Name: '',
             MobileNumber: '',
             AltMobileNumber: '',
@@ -39,7 +40,6 @@ export default {
     },
     methods: {
         createMember(e) {
-            e.preventDefault();
             let data = localStorage.getItem('memberData')
             const currentMember = {
                 Name: this.Name,
@@ -52,9 +52,24 @@ export default {
                 Active: true
             }
             if (data) {
-                data = JSON.parse(data);
-                data.push(currentMember)
+                data = JSON.parse(data); // 3 
+                console.log(data);
+                data.push(currentMember);
+                localStorage.setItem('memberData', JSON.stringify(data));
+                this.clearForm()
+            } else {
+                localStorage.setItem('memberData', JSON.stringify([currentMember]));
+                this.clearForm()
             }
+        },
+        clearForm() {
+            this.Name = '';
+            this.MobileNumber = '';
+            this.AltMobileNumber = '';
+            this.Address = '';
+            this.DueDate = '';
+            this.JoiningDate = '';
+            this.$router.push('/home')
         }
     },
     mounted() {

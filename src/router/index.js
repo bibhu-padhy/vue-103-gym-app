@@ -17,6 +17,12 @@ const routes = [{
     path: '/add-member',
     name: 'AddMember',
     component: () => import('../views/AddMember.vue')
+  },
+  {
+    path: '/member/:id',
+    name: 'MemberDetails',
+    props: true,
+    component: () => import('../views/MemberDetails.vue')
   }
 ]
 

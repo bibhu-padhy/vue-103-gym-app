@@ -6,6 +6,7 @@
 </template>
 <script>
 import Header from './components/Header.vue'
+import MemberListService from './services/memberList';
 export default {
   name: 'App',
   components: { Header },
@@ -18,7 +19,9 @@ export default {
       }
     }
   },
-  beforeMount() {
+  async beforeMount() {
+    const list = await MemberListService.getAllMembers()
+    console.log(list);
     this.isUserLoggedIn()
   },
   data() {
@@ -29,7 +32,6 @@ export default {
 }
 </script>
 <style>
-
 * {
   margin: 0;
   padding: 0;

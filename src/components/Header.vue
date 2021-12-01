@@ -1,6 +1,6 @@
 <template>
     <div class="header_container">
-        <button @click="$router.push('add-member')">Add</button>
+        <button @click="$router.push({ name: 'AddMember' })">Add</button>
         <button @click="toggleMenu = !toggleMenu">
             Menu
             <transition name="menu">
