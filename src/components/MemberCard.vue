@@ -1,7 +1,8 @@
 <template>
     <router-link
+        v-if="memberDetail"
         class="router_link"
-        :to="{ name: 'MemberDetails', params: { id: memberDetail.Name } }"
+        :to="{ name: 'MemberDetails', params: { id: memberDetail.id } }"
     >
         <div class="card_container">
             <div class="card_header">
@@ -30,17 +31,21 @@
 export default {
     name: 'MemberCard',
     props: ['memberDetail'],
-    created() {
-        console.log(this.memberDetail);
-    },
+    created() { },
 }
 </script>
 
 <style scoped>
 .router_link {
     text-decoration: none !important;
+    color: rgb(94, 94, 94);
 }
 .card_container {
     cursor: pointer;
+    margin-top: 10px;
+    border: 1px solid burlywood;
+    padding: 10px;
+    max-width: 400px;
+    text-align: center;
 }
 </style>

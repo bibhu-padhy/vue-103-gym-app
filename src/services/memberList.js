@@ -8,7 +8,11 @@ class MemberListService {
         const collectionList = await db.collection('MembersList_Dev').get()
         const list = []
         collectionList.docs.forEach(item => {
-            list.push(item.data())
+            console.log(item.id);
+            list.push({
+                ...item.data(),
+                id: item.id
+            })
         })
 
         return list

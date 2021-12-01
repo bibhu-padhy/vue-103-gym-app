@@ -1,10 +1,14 @@
 <template>
-    <MemberCard v-for="(item,index) in membersData" :key="index" :memberDetail="item" />
+    <h1>{{ $store.state.Name }}</h1>
+    <MemberCard v-for="(item) in $store.state.membersList" :key="item.id" :memberDetail="item" />
 </template>
 
 <script>
-import Header from '../components/Header.vue'
-import MemberCard from '../components/MemberCard.vue'
+import Header from '../components/Header.vue';
+import MemberCard from '../components/MemberCard.vue';
+
+import { useStore } from 'vuex'
+
 export default {
     name: 'Home',
     data() {
@@ -16,9 +20,8 @@ export default {
         Header,
         MemberCard
     },
-    created() {
-        this.membersData = JSON.parse(localStorage.getItem('memberData'));
-        console.log(this.membersData);
+    async created() {
+        useStore().commit('getMembersList');
     },
 }
 </script>
