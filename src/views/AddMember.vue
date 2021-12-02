@@ -27,6 +27,8 @@
 </template>
 
 <script>
+import MemberListService from '../services/memberList';
+
 export default {
     data() {
         return {
@@ -39,8 +41,7 @@ export default {
         }
     },
     methods: {
-        createMember(e) {
-            let data = localStorage.getItem('memberData')
+        async createMember(e) {
             const currentMember = {
                 Name: this.Name,
                 MobileNumber: this.MobileNumber,
@@ -51,15 +52,10 @@ export default {
                 status: 1,
                 Active: true
             }
-            if (data) {
-                data = JSON.parse(data); // 3 
-                console.log(data);
-                data.push(currentMember);
-                localStorage.setItem('memberData', JSON.stringify(data));
+            const memberId = await MemberListService.addMember(currentMember)
+            if (memberId) {
                 this.clearForm()
-            } else {
-                localStorage.setItem('memberData', JSON.stringify([currentMember]));
-                this.clearForm()
+                alert('Member created successfully')
             }
         },
         clearForm() {
