@@ -7,22 +7,25 @@
 import Header from '../components/Header.vue';
 import MemberCard from '../components/MemberCard.vue';
 
-import { useStore } from 'vuex'
-
+import { mapActions } from 'vuex'
 export default {
     name: 'Home',
     data() {
         return {
-            membersData: null
+            membersList: null
         }
     },
     components: {
         Header,
         MemberCard
     },
-    async created() {
-        useStore().commit('getMembersList');
+    methods: {
+        ...mapActions(['getMembersList']),
     },
+    mounted() {
+        this.getMembersList()
+    },
+
 }
 </script>
 

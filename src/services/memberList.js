@@ -17,6 +17,11 @@ class MemberListService {
 
         return list
     }
+
+    async addMember(member) {
+        return await db.collection('MembersList_Dev')
+            .add(member)
+    }
 }
 
 
